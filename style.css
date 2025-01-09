@@ -730,8 +730,8 @@ body {
 }
 
 .bpGrowth-wrapper {
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-    padding: 60px 0;
+    /* background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)); */
+    padding: 36px 0;
 }
 
 .bpGrowth-mainTitle {
@@ -778,7 +778,7 @@ body {
 }
 
 .bpGrowth-imageContainer {
-    width: 600px;
+    width: 550px;
     height: 300px;
     overflow: hidden;
 }
@@ -1236,7 +1236,7 @@ body {
 }
 .bp-decor-top {
     position: absolute;
-    top: 10%;
+    /* top: 10%; */
     left: 5%;
     width: 60px;
     height: 60px;
@@ -1249,7 +1249,7 @@ body {
 
 .bp-decor-bottom {
     position: absolute;
-    bottom: 1%;
+    /* bottom: 1%; */
     right: 8%;
     width: 80px;
     height: 80px;
