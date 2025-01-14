@@ -11,6 +11,65 @@
     
 </head>
 <body>
+    <div class="modal fade bp-modal" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h5 class="modal-title text-center" id="contactModalLabel">Start Your Journey</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="https://app.formester.com/forms/241b2cdf-8fea-466f-8e8b-76ccfe04260c/submissions" 
+                          method="POST" 
+                          class="contact-form">
+                        
+                        <div class="form-group">
+                            <label class="form-label">Full Name</label>
+                            <input type="text" 
+                                   name="name" 
+                                   class="form-control" 
+                                   required 
+                                   placeholder="Enter your name">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Email Address</label>
+                            <input type="email" 
+                                   name="email" 
+                                   class="form-control" 
+                                   required 
+                                   placeholder="Enter your email">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Phone</label>
+                            <input type="tel" 
+                                   name="mobile-number" 
+                                   required 
+                                   class="form-control" 
+                                   placeholder="Enter your phone number">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Services</label>
+                            <select class="form-control" required name="services">
+                                <option value="" disabled selected>Select Services</option>
+                                <option value="digital-marketing">Digital Marketing</option>
+                                <option value="seo">Search Engine Optimization (SEO)</option>
+                                <option value="social-media">Social Media Management</option>
+                                <option value="content-marketing">Content Marketing</option>
+                                <option value="website-development">Website Development</option>
+                            </select>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            Let's Grow Your Practice Today.
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <header class="glass-header">
         <nav class="navbar">
             <div class="container">
@@ -20,7 +79,7 @@
                 </a>
 
                 <!-- CTA Button -->
-                <a href="#Appointment-form" class="cta-button">
+                <a  class="cta-button" data-bs-toggle="modal" data-bs-target="#contactModal">
                     <span>Get Started</span>
                     <div class="shine-effect"></div>
                 </a>
@@ -40,7 +99,7 @@
             <div class="row align-items-center content-wrapper">
                 <!-- Content Side -->
                 <div class="col-lg-6">
-                    <h1 class="section-title">We provide Digital Solutions for Hospitals,  <span>Doctors & Clinics </span></h1>
+                    <h1 class="section-title">Simplifying Digital for <span>Doctors, Clinics & Hospitals</span></h1>
                     <p class="section-description">
                         With the experience of 9+ years, we’ve been working exclusively with healthcare organizations. 
                         Our expertise in this field helps us deliver reliable growth in patient footfall, making it easier 
@@ -112,7 +171,7 @@
                 <!-- Form Side -->
                 <div class="col-lg-5 offset-lg-1">
                     <form action ='https://app.formester.com/forms/241b2cdf-8fea-466f-8e8b-76ccfe04260c/submissions' method='POST' class="contact-form" >
-                        <h3 class="mb-4">Start Your Journey</h3>
+                        <h3 class="mb-4 text-center">Start Your Journey</h3>
                         
                         <div class="form-group">
                             <label class="form-label">Full Name</label>
@@ -329,7 +388,7 @@
 
             <!-- CTA Button -->
             <div class="text-center">
-                <a href="#Appointment-form" class="dma-cta-button">
+                <a  class="dma-cta-button" data-bs-toggle="modal" data-bs-target="#contactModal">
                     Transform Your Healthcare Brand 
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -411,8 +470,8 @@
             </div>
 
             <div class="text-center">
-                <a href="#Appointment-form" class="dma-cta-button">
-                   Contact Now  
+                <a  class="dma-cta-button" data-bs-toggle="modal" data-bs-target="#contactModal">
+                    Schedule a free consultation
                     <i class="fas fa-arrow-right"></i>
                 </a>
             </div>
@@ -578,8 +637,8 @@
             </div>
         </div>
         <div class="text-center">
-            <a href="#Appointment-form" class="dma-cta-button">
-               Contact Now  
+            <a  class="dma-cta-button" data-bs-toggle="modal" data-bs-target="#contactModal">
+                Schedule a free consultation
                 <i class="fas fa-arrow-right"></i>
             </a>
         </div>
@@ -652,22 +711,22 @@
                             <!-- FAQ Item 1 -->
                             <div class="bp-faq-item mb-3">
                                 <div class="bp-faq-header" onclick="toggleFaq(this)">
-                                    <h3 class="bp-faq-question">What services do you offer?</h3>
+                                    <h3 class="bp-faq-question">How do you ensure results for healthcare brands?</h3>
                                     <span class="bp-faq-icon">+</span>
                                 </div>
                                 <div class="bp-faq-content">
-                                    <p class="text-gray-600">We provide SEO, PPC, social media marketing, website design, and more—tailored just for healthcare brands.</p>
+                                    <p class="text-gray-600">We use data-driven strategies, tailored campaigns, and ongoing optimization to deliver measurable outcomes like increased patient footfall and brand visibility.</p>
                                 </div>
                             </div>
 
                             <!-- FAQ Item 2 -->
                             <div class="bp-faq-item mb-3">
                                 <div class="bp-faq-header" onclick="toggleFaq(this)">
-                                    <h3 class="bp-faq-question">How do you help grow patient footfall?</h3>
+                                    <h3 class="bp-faq-question">Can you help with both online and offline marketing ?</h3>
                                     <span class="bp-faq-icon">+</span>
                                 </div>
                                 <div class="bp-faq-content">
-                                    <p class="text-gray-600">We use targeted strategies like ads, SEO, and engaging content to connect you with more patients.
+                                    <p class="text-gray-600">Yes, while we specialize in digital marketing, we can also provide guidance for offline campaigns to complement your online efforts.
                                     </p>
                                 </div>
                             </div>
@@ -675,11 +734,11 @@
                             <!-- FAQ Item 3 -->
                             <div class="bp-faq-item mb-3">
                                 <div class="bp-faq-header" onclick="toggleFaq(this)">
-                                    <h3 class="bp-faq-question">Do you only work with healthcare brands?</h3>
+                                    <h3 class="bp-faq-question">Do you offer customized marketing plans?</h3>
                                     <span class="bp-faq-icon">+</span>
                                 </div>
                                 <div class="bp-faq-content">
-                                    <p class="text-gray-600">Yes! We specialize in healthcare, so we understand your unique needs and challenges.
+                                    <p class="text-gray-600">Absolutely! Every healthcare brand is unique, so we create personalized strategies that align with your goals and budget.
                                         </p>
                                 </div>
                             </div>
@@ -687,11 +746,11 @@
                             <!-- FAQ Item 4 -->
                             <div class="bp-faq-item mb-3">
                                 <div class="bp-faq-header" onclick="toggleFaq(this)">
-                                    <h3 class="bp-faq-question">How long before I see results?</h3>
+                                    <h3 class="bp-faq-question"> Can you work with a limited marketing budget?</h3>
                                     <span class="bp-faq-icon">+</span>
                                 </div>
                                 <div class="bp-faq-content">
-                                    <p class="text-gray-600">You’ll start seeing noticeable growth within 3-6 months, depending on the service.    </p>
+                                    <p class="text-gray-600">Yes, we design efficient plans that maximize ROI, no matter the size of your marketing budget.                                    </p>
                                 </div>
                             </div>
                             <div class="bp-faq-item mb-3">
@@ -707,11 +766,12 @@
                             </div>
                             <div class="bp-faq-item mb-3">
                                 <div class="bp-faq-header" onclick="toggleFaq(this)">
-                                    <h3 class="bp-faq-question">Why should I choose Branding Pioneers? </h3>
+                                    <h3 class="bp-faq-question">How do you track and report campaign performance? </h3>
                                     <span class="bp-faq-icon">+</span>
                                 </div>
                                 <div class="bp-faq-content">
-                                    <p class="text-gray-600">We’ve been helping healthcare brands grow for over 11 years with proven strategies and a personal touch!
+                                    <p class="text-gray-600">We provide detailed reports with key metrics like website traffic, patient inquiries, and ad performance, so you always know how your campaigns are doing.
+
                                     </p>
                                 </div>
                             </div>
@@ -755,7 +815,7 @@
                         </div>
                         
                         <button type="submit" class="submit-btn">
-                            Let's Create Together
+                            Schedule a free consultation
                         </button>
                     </form>
                 </div>
