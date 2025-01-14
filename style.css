@@ -599,91 +599,123 @@ body {
 }
 
 /* Logo Slider Styles */
-.dma-logo-carousel {
-    position: relative;
-    padding: 2rem 0;
-    background: white;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-    overflow: hidden;
-}
-
-.dma-logo-track {
+.partner-track {
     display: flex;
-    animation: dmaScroll 30s linear infinite;
-    width: calc(250px * 12);
+    width: fit-content;
+    animation: scroll 30s linear infinite;
 }
 
-.dma-logo-item {
+.partner-card {
     width: 250px;
     padding: 1.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
-.dma-logo-wrapper {
+.logo-wrapper {
     width: 180px;
-    height: 110px;
+    height: 140px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
     padding: 1rem;
-    border-radius: 12px;
     background: white;
+    border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
 }
 
-.dma-logo-wrapper:hover {
+.logo-wrapper:hover {
     transform: translateY(-5px);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
 }
 
-.dma-client-image {
+.partner-logo {
     max-width: 100%;
-    max-height: 100%;
-    /* filter: grayscale(100%); */
+    max-height: 70%;
     opacity: 0.7;
-    transition: all 0.3s ease;
+    transition: opacity 0.3s ease;
 }
 
-.dma-logo-wrapper:hover .dma-client-image {
-    filter: grayscale(0%);
+.partner-name {
+    margin-top: 0.75rem;
+    font-size: 0.875rem;
+    color: #666;
+    text-align: center;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.logo-wrapper:hover .partner-logo {
     opacity: 1;
 }
 
-@keyframes dmaScroll {
+.logo-wrapper:hover .partner-name {
+    color: #333;
+}
+
+.slider-container {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 0;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Continuous Scroll Animation */
+@keyframes scroll {
     0% {
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-250px * 6));
+        transform: translateX(calc(-250px * 5)); /* Adjust based on number of slides */
     }
 }
 
-/* Carousel Edge Gradients */
-.dma-logo-carousel::before,
-.dma-logo-carousel::after {
-    content: "";
+/* Gradient Edges */
+.slider-container::before,
+.slider-container::after {
+    content: '';
     position: absolute;
     top: 0;
-    height: 100%;
     width: 100px;
+    height: 100%;
     z-index: 2;
-    pointer-events: none;
 }
 
-.dma-logo-carousel::before {
+.slider-container::before {
     left: 0;
     background: linear-gradient(90deg, white 0%, transparent 100%);
 }
 
-.dma-logo-carousel::after {
+.slider-container::after {
     right: 0;
     background: linear-gradient(90deg, transparent 0%, white 100%);
 }
 
+/* Mobile Styles */
+@media (max-width: 992px) {
+    .partner-track {
+        animation: scrollMobile 20s linear infinite;
+    }
+
+    .partner-card {
+        width: 200px;
+    }
+
+    .logo-wrapper {
+        width: 160px;
+        height: 120px;
+    }
+
+    @keyframes scrollMobile {
+        0% {
+            transform: translateX(0);
+        }
+        100% {
+            transform: translateX(calc(-200px * 2)); /* Adjust for mobile width */
+        }
+    }
+}
 /* Background Decorative Elements */
 .dma-decor-element {
     position: absolute;
