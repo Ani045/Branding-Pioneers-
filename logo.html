@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7-Hexagon Logo Showcase</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #673ab7;
+            --primary-light: #9575cd;
+            --primary-dark: #4527a0;
+            --hex-width: 220px;
+            --hex-height: 250px;
+            --hex-margin: 5px;
+            --hex-color: white;
+        }
+
+        .showcase-section {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 50px 0;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .honeycomb {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
+            justify-content: center;
+            position: relative;
+        }
+
+        .honeycomb-row {
+            display: flex;
+            justify-content: center;
+            margin-top: -30px;
+            width: 100%;
+        }
+
+        .honeycomb-row:first-child {
+            margin-top: 0;
+        }
+
+        .honeycomb-cell {
+            flex: 0 0 var(--hex-width);
+            height: var(--hex-height);
+            margin: 0 10px;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            background: var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px;
+        }
+
+        .honeycomb-cell::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--primary);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .honeycomb-cell::before {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: var(--hex-color);
+            clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+
+        .honeycomb-cell:hover {
+            transform: translateY(-5px);
+            /* --hex-color: rgba(103, 58, 183, 0.05); */
+        }
+
+        .honeycomb-content {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 1em;
+            z-index: 2;
+        }
+
+        .honeycomb-img {
+            max-width: 80%;
+            max-height: 100px;
+            object-fit: contain;
+            transition: all 0.3s ease;
+            margin-bottom: 15px;
+        }
+
+        .honeycomb-cell:hover .honeycomb-img {
+            transform: scale(1.1);
+        }
+
+        .honeycomb-title {
+            font-size: 1rem;
+            color: #333;
+            margin-top: 10px;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+        }
+
+        .honeycomb-cell:hover .honeycomb-title {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .honeycomb-category {
+            position: absolute;
+            top: 20px;
+            font-size: 0.9rem;
+            color: var(--primary);
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .honeycomb-cell:hover .honeycomb-category {
+            opacity: 1;
+        }
+
+        .showcase-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .showcase-title {
+            color: var(--primary-dark);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .showcase-description {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 1200px) {
+            :root {
+                --hex-width: 200px;
+                --hex-height: 230px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .honeycomb {
+                transform: scale(0.8);
+                margin-top: -50px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .honeycomb {
+                transform: scale(0.6);
+                margin-top: -100px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<section class="showcase-section">
+    <div class="container">
+        <div class="showcase-header">
+            <h2 class="showcase-title">Our Healthcare Network</h2>
+            <p class="showcase-description">
+                Connected with leading healthcare providers across India
+            </p>
+        </div>
+
+        <div class="honeycomb">
+            <!-- Top Row (3 hexagons) -->
+            <div class="honeycomb-row">
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                        <img src="assets/images/logos/download (1).png" alt="Medanta" class="honeycomb-img">
+                        <div class="honeycomb-title">Medanta</div>
+                    </div>
+                </div>
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                        <img src="assets/images/logos/download.jpeg" alt="Apollo" class="honeycomb-img">
+                        <div class="honeycomb-title">Apollo Hospitals</div>
+                    </div>
+                </div>
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                       
+                        <img src="assets/images/logos/indira.jpeg" alt="Indira" class="honeycomb-img">
+                        <div class="honeycomb-title">Indira Gandhi Hospitals</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Middle Row (4 hexagons) -->
+            <div class="honeycomb-row">
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                       
+                        <img src="assets/images/logos/ivy.jpeg" alt="Ivy" class="honeycomb-img">
+                        <div class="honeycomb-title">Ivy Hospitals</div>
+                    </div>
+                </div>
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                        
+                        <img src="assets/images/logos/lifecare.png" alt="Lifecare" class="honeycomb-img">
+                        <div class="honeycomb-title">Life Care Hospitals</div>
+                    </div>
+                </div>
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                    
+                        <img src="assets/images/logos/rainbow.jpeg" alt="Rainbow" class="honeycomb-img">
+                        <div class="honeycomb-title">Rainbow Children's Hospitals</div>
+                    </div>
+                </div>
+                <div class="honeycomb-cell">
+                    <div class="honeycomb-content">
+                       
+                        <img src="assets/images/logos/aavry.jpeg" alt="Aavry" class="honeycomb-img">
+                        <div class="honeycomb-title">Aavry Healthcare</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="dma-partners-showcase">
+    <!-- Decorative Elements -->
+    <div class="dma-decor-element dma-decor-top"></div>
+    <div class="dma-decor-element dma-decor-bottom"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <h2 class="section-title">
+            Trusted by <span class="title-accent">Doctors Just Like You</span>
+        </h2>
+        <div class="title-underline"></div>
+
+        <!-- Logo Carousel -->
+        <div class="slider-container">
+            <div class="partner-track">
+                <!-- First Set -->
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/download1.png" alt="Cloud 9" class="partner-logo">
+                        <h3 class="partner-name">Cloud 9</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/medanta-logo.webp" alt="Medanta" class="partner-logo">
+                        <h3 class="partner-name">Medanta</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/aiims.webp" alt="AIIMS" class="partner-logo">
+                        <h3 class="partner-name">AIIMS</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/apollo-logo.webp" alt="Apollo Hospitals" class="partner-logo">
+                        <h3 class="partner-name">Apollo Hospitals</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/igehrc-logo2.webp" alt="IGEHRC" class="partner-logo">
+                        <h3 class="partner-name">IGEHRC</h3>
+                    </div>
+                </div>
+
+                <!-- Duplicate Set for Seamless Loop -->
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/download1.png" alt="Cloud 9" class="partner-logo">
+                        <h3 class="partner-name">Cloud 9</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/medanta-logo.webp" alt="Medanta" class="partner-logo">
+                        <h3 class="partner-name">Medanta</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/aiims.webp" alt="AIIMS" class="partner-logo">
+                        <h3 class="partner-name">AIIMS</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/apollo-logo.webp" alt="Apollo Hospitals" class="partner-logo">
+                        <h3 class="partner-name">Apollo Hospitals</h3>
+                    </div>
+                </div>
+                <div class="partner-card">
+                    <div class="logo-wrapper">
+                        <img src="assets/images/igehrc-logo2.webp" alt="IGEHRC" class="partner-logo">
+                        <h3 class="partner-name">IGEHRC</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Section -->
+        
+    </div>
+</section>
+
+</body>
+</html>

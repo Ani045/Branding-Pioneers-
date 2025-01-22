@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Case Studies Section</title>
+    <title>Enhanced Logo Slider</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         :root {
@@ -12,340 +12,554 @@
             --primary-dark: #4527a0;
         }
 
-        .casestudy-section {
-            padding: 60px 0;
-            background: #fff;
+        .partner-section {
+            padding: 50px 0;
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            position: relative;
+            overflow: hidden;
         }
 
-        .casestudy-header {
+        .category-container {
+            background: white;
+            border-radius: 15px;
+            padding: 15px;
+            box-shadow: 0 5px 20px rgba(103, 58, 183, 0.08);
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(103, 58, 183, 0.1);
+        }
+
+        .category-title {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+            padding-left: 18px;
+            border-left: 4px solid var(--primary);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .category-title::after {
+            content: '';
+            height: 2px;
+            width: 80%;
+            background: linear-gradient(to right, var(--primary-light) 0%, transparent 100%);
+            margin-left: 20px;
+        }
+
+        .logo-track {
+            display: flex;
+            width: fit-content;
+            animation: scroll 15s linear infinite;
+            padding: 10px 0;
+        }
+
+        .logo-track:hover {
+            animation-play-state: paused;
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .logo-slider {
+            overflow: hidden;
+            position: relative;
+            padding: 10px 0;
+            background: linear-gradient(to bottom, rgba(103, 58, 183, 0.03), transparent);
+        }
+
+        .logo-slide {
+            padding: 20px;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 220px;
+            width: 300px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .logo-slide::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            right: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, rgba(103, 58, 183, 0.1), transparent);
+        }
+
+        .logo-image-wrapper {
+            height: 150px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(103, 58, 183, 0.08);
+            border: 1px solid rgba(103, 58, 183, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .logo-slide:hover .logo-image-wrapper {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(103, 58, 183, 0.12);
+            border-color: rgba(103, 58, 183, 0.1);
+        }
+
+        .logo-slide img {
+            max-width: 100%;
+            max-height: 150px;
+            object-fit: contain;
+            /* filter: grayscale(100%); */
+            opacity: 0.85;
+            transition: all 0.4s ease;
+        }
+
+        .logo-slide:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        .logo-title {
+            font-size: 0.95rem;
+            color: #555;
             text-align: center;
-            margin-bottom: 50px;
+            margin-top: 15px;
+            line-height: 1.3;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 8px 15px;
+            border-radius: 20px;
+            background: rgba(103, 58, 183, 0.05);
+            max-width: 90%;
         }
 
-        .casestudy-subtitle {
-            color: var(--primary);
-            font-size: 1.1rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
+        .logo-slide:hover .logo-title {
+            color: var(--primary-dark);
+            background: rgba(103, 58, 183, 0.1);
+            transform: scale(1.02);
         }
 
-        .casestudy-title {
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            padding-bottom: 20px;
+        }
+
+        .section-title {
             color: var(--primary-dark);
             font-size: 2.2rem;
             font-weight: 700;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            background: linear-gradient(45deg, var(--primary), var(--primary-dark));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+            display: inline-block;
         }
 
-        .casestudy-description {
-            max-width: 700px;
-            margin: 0 auto;
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-light), var(--primary));
+            border-radius: 2px;
+        }
+
+        .section-description {
             color: #666;
             font-size: 1.1rem;
-            line-height: 1.6;
+            max-width: 700px;
+            margin: 20px auto 0;
         }
 
-        .casestudy-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            margin-bottom: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-            transition: transform 0.3s ease;
+        /* Add gradient overlays for fade effect */
+        .logo-slider::before,
+        .logo-slider::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            width: 120px;
             height: 100%;
-            display: flex;
-            flex-direction: column;
+            z-index: 2;
+            pointer-events: none;
         }
 
-        .casestudy-card:hover {
-            transform: translateY(-5px);
+        .logo-slider::before {
+            left: 0;
+            background: linear-gradient(to right, white 0%, rgba(255, 255, 255, 0) 100%);
         }
 
-        .casestudy-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
+        .logo-slider::after {
+            right: 0;
+            background: linear-gradient(to left, white 0%, rgba(255, 255, 255, 0) 100%);
         }
 
-        .casestudy-content {
-            padding: 25px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .casestudy-category {
-            display: inline-block;
-            padding: 6px 15px;
-            background: rgba(103, 58, 183, 0.1);
-            color: var(--primary);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-bottom: 15px;
-        }
-
-        .casestudy-card-title {
-            color: var(--primary-dark);
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
-        .casestudy-excerpt {
-            color: #666;
-            margin-bottom: 20px;
-            line-height: 1.6;
-            flex-grow: 1;
-        }
-
-        .casestudy-metrics {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 20px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        .metric-item {
-            flex: 1;
-        }
-
-        .metric-value {
-            color: var(--primary);
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 5px;
-        }
-
-        .metric-label {
-            color: #666;
-            font-size: 0.9rem;
-        }
-
-        .casestudy-link {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            transition: color 0.3s ease;
-        }
-
-        .casestudy-link:hover {
-            color: var(--primary-dark);
-        }
-
-        .casestudy-link i {
-            margin-left: 8px;
-            transition: transform 0.3s ease;
-        }
-
-        .casestudy-link:hover i {
-            transform: translateX(5px);
-        }
-
-        .filters {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .filter-btn {
-            padding: 8px 20px;
-            border: none;
-            background: none;
-            color: #666;
-            border-radius: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .filter-btn.active {
-            background: var(--primary);
-            color: white;
-        }
-
-        .filter-btn:hover:not(.active) {
-            background: rgba(103, 58, 183, 0.1);
-            color: var(--primary);
-        }
-
-        .casestudy-card {
-            transition: all 0.3s ease;
-        }
-
-        .hide-card {
-            opacity: 0;
-            transform: scale(0.8);
-            height: 0;
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-
-        /* Add animation for showing cards */
-        .show-card {
-            animation: showCard 0.5s forwards;
-        }
-
-        @keyframes showCard {
-            from {
-                opacity: 0;
-                transform: scale(0.8);
+        @media (max-width: 768px) {
+            .logo-slide {
+                height: 200px;
+                width: 260px;
+                padding: 15px;
             }
-            to {
-                opacity: 1;
-                transform: scale(1);
+            
+            .logo-image-wrapper {
+                height: 170px;
+            }
+            
+            .logo-title {
+                font-size: 0.9rem;
+                margin-top: 12px;
             }
         }
     </style>
 </head>
 <body>
 
-    <section class="casestudy-section">
-        <div class="container">
-            <div class="casestudy-header">
-                <p class="casestudy-subtitle">Success Stories</p>
-                <h2 class="casestudy-title">Featured Case Studies</h2>
-                <p class="casestudy-description">
-                    Explore how we've helped businesses achieve remarkable growth through innovative solutions and strategic implementations.
-                </p>
-            </div>
-    
-            <div class="filters" id="filters">
-                <button class="filter-btn active" data-category="all">All Projects</button>
-                <button class="filter-btn" data-category="ecommerce">E-commerce</button>
-                <button class="filter-btn" data-category="healthcare">Healthcare</button>
-                <button class="filter-btn" data-category="technology">Technology</button>
-                <button class="filter-btn" data-category="finance">Finance</button>
-            </div>
-    
-            <div class="row" id="case-studies-container">
-                <!-- Case Study 1 -->
-                <div class="col-lg-4 col-md-6 casestudy-item" data-category="ecommerce">
-                    <div class="casestudy-card">
-                        <img src="/api/placeholder/800/500" alt="E-commerce Platform" class="casestudy-image">
-                        <div class="casestudy-content">
-                            <span class="casestudy-category">E-commerce</span>
-                            <h3 class="casestudy-card-title">Global E-commerce Platform Optimization</h3>
-                            <p class="casestudy-excerpt">
-                                Transformed an e-commerce platform's performance through advanced optimization techniques and user experience improvements.
-                            </p>
-                            <div class="casestudy-metrics">
-                                <div class="metric-item">
-                                    <div class="metric-value">150%</div>
-                                    <div class="metric-label">Revenue Growth</div>
-                                </div>
-                                <div class="metric-item">
-                                    <div class="metric-value">3x</div>
-                                    <div class="metric-label">Conversion Rate</div>
-                                </div>
-                            </div>
-                            <a href="#" class="casestudy-link">
-                                View Case Study
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+<section class="partner-section">
+    <div class="container">
+        <div class="section-header1">
+            <h2 class="section-title1">Our Trusted Partners</h2>
+            <p class="section-description1">
+                Collaborating with leading healthcare organizations to drive innovation and excellence
+            </p>
+        </div>
+
+        <!-- Health B2B Category -->
+        <div class="category-container">
+            <h3 class="category-title">Corporate Hospitals</h3>
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <!-- Original set -->
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/download (1).png" alt="Uniheal">
                         </div>
+                        <div class="logo-title">Medanta</div>
                     </div>
-                </div>
-    
-                <!-- Case Study 2 -->
-                <div class="col-lg-4 col-md-6 casestudy-item" data-category="healthcare">
-                    <div class="casestudy-card">
-                        <img src="/api/placeholder/800/500" alt="Healthcare Solution" class="casestudy-image">
-                        <div class="casestudy-content">
-                            <span class="casestudy-category">Healthcare</span>
-                            <h3 class="casestudy-card-title">Digital Healthcare Transformation</h3>
-                            <p class="casestudy-excerpt">
-                                Implemented innovative digital solutions for a leading healthcare provider, improving patient care and operational efficiency.
-                            </p>
-                            <div class="casestudy-metrics">
-                                <div class="metric-item">
-                                    <div class="metric-value">45%</div>
-                                    <div class="metric-label">Cost Reduction</div>
-                                </div>
-                                <div class="metric-item">
-                                    <div class="metric-value">98%</div>
-                                    <div class="metric-label">Patient Satisfaction</div>
-                                </div>
-                            </div>
-                            <a href="#" class="casestudy-link">
-                                View Case Study
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/download.jpeg" alt="Vizer Life">
                         </div>
+                        <div class="logo-title">Indraprastha Apollo Hospitals</div>
                     </div>
-                </div>
-    
-                <!-- Case Study 3 -->
-                <div class="col-lg-4 col-md-6 casestudy-item" data-category="finance">
-                    <div class="casestudy-card">
-                        <img src="/api/placeholder/800/500" alt="Fintech Solution" class="casestudy-image">
-                        <div class="casestudy-content">
-                            <span class="casestudy-category">Finance</span>
-                            <h3 class="casestudy-card-title">FinTech App Development</h3>
-                            <p class="casestudy-excerpt">
-                                Developed a cutting-edge fintech application that revolutionized personal banking and investment management.
-                            </p>
-                            <div class="casestudy-metrics">
-                                <div class="metric-item">
-                                    <div class="metric-value">2M+</div>
-                                    <div class="metric-label">Active Users</div>
-                                </div>
-                                <div class="metric-item">
-                                    <div class="metric-value">4.8</div>
-                                    <div class="metric-label">App Rating</div>
-                                </div>
-                            </div>
-                            <a href="#" class="casestudy-link">
-                                View Case Study
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/indira.jpeg" alt="TaCa Healthcare">
                         </div>
+                        <div class="logo-title">Indira Gandhi Eye Hospitals</div>
                     </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/ivy.jpeg" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Ivy Hospitals</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/lifecare.png" alt="Kidney Healers">
+                        </div>
+                        <div class="logo-title">Life care Hospitals</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/rainbow.jpeg" alt="Kidney Healers">
+                        </div>
+                        <div class="logo-title">Rainbow Children's Hospitals</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/download (1).png" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">Medanta</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/download.jpeg" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Indraprastha Apollo Hospitals</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/indira.jpeg" alt="TaCa Healthcare">
+                        </div>
+                        <div class="logo-title">Indira Gandhi Eye Hospitals</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/ivy.jpeg" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Ivy Hospitals</div>
+                    </div>
+
+
+                    <!-- Duplicate set for continuous scroll -->
+                
+                    
                 </div>
             </div>
         </div>
-    </section>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const filterButtons = document.querySelectorAll('.filter-btn');
-        const caseStudyItems = document.querySelectorAll('.casestudy-item');
-    
-        // Add click event to filter buttons
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                // Add active class to clicked button
-                button.classList.add('active');
-    
-                const selectedCategory = button.getAttribute('data-category');
-    
-                // Filter case studies
-                caseStudyItems.forEach(item => {
-                    const itemCategory = item.getAttribute('data-category');
-                    
-                    if (selectedCategory === 'all' || selectedCategory === itemCategory) {
-                        item.style.display = 'block';
-                        item.querySelector('.casestudy-card').classList.remove('hide-card');
-                        item.querySelector('.casestudy-card').classList.add('show-card');
-                    } else {
-                        item.querySelector('.casestudy-card').classList.add('hide-card');
-                        item.querySelector('.casestudy-card').classList.remove('show-card');
-                        setTimeout(() => {
-                            item.style.display = 'none';
-                        }, 300); // Match with transition duration
-                    }
-                });
-            });
-        });
-    });
-    </script>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+        <!-- Add other categories similarly -->
+        <div class="category-container">
+            <h3 class="category-title">Hospitals</h3>
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <!-- Original set -->
+                    
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/aavry.jpeg" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">Aavry Heathcare Hospital</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/artemis-logo.png" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Artemis Hospitals</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/india.png" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Indian Spinal Injuries Centre</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/pushpanjali.jpeg" alt="TaCa Healthcare">
+                        </div>
+                        <div class="logo-title">Pushpanjali Hospital & Research Centre</div>
+                    </div>
+                    
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/rajhospital.png" alt="Kidney Healers">
+                        </div>
+                        <div class="logo-title">Raj Hospitals</div>
+                    </div>
+                    <!-- Duplicate set for continuous scroll -->
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/cdas .png" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">CDAS Superspeciality Hospital</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/aashlok.png" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Aashlok Hospital</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/shrishyam.jpeg" alt="TaCa Healthcare">
+                        </div>
+                        <div class="logo-title">Shrishyam Hospital</div>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+
+         <!-- Add other categories similarly -->
+         <div class="category-container">
+            <h3 class="category-title">Health Education</h3>
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <!-- Original set -->
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/aureus-logo.webp" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">Aureus University</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/medicity.png" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Medicity Guwahati</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/academy-of-dental .png" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Academy of Dental Excellence</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/aureus-logo.webp" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">Aureus University</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/medicity.png" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Medicity Guwahati</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/academy-of-dental .png" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Academy of Dental Excellence</div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Add other categories similarly -->
+        <div class="category-container">
+            <h3 class="category-title">Health B2B</h3>
+            <div class="logo-slider">
+                <div class="logo-track">
+                    <!-- Original set -->
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/uniheal.png" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">Uniheal</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/vizerlife.png" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Vizerlife</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/taca.png" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Taca Healthcare</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/telth.png" alt="TaCa Healthcare">
+                        </div>
+                        <div class="logo-title">Telth</div>
+                    </div>
+                    
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/emoaid.png" alt="Kidney Healers">
+                        </div>
+                        <div class="logo-title">Emoaid</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/kidney-healers.jpeg" alt="Kidney Healers">
+                        </div>
+                        <div class="logo-title">kidney-healers</div>
+                    </div>
+                    <!-- Duplicate set for continuous scroll -->
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/uniheal.png" alt="Uniheal">
+                        </div>
+                        <div class="logo-title">Uniheal</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/vizerlife.png" alt="VitusCare">
+                        </div>
+                        <div class="logo-title">Vizerlife</div>
+                    </div>
+                    <div class="logo-slide">
+                        <div class="logo-image-wrapper">
+                            <img src="assets/images/logos/taca.png" alt="Vizer Life">
+                        </div>
+                        <div class="logo-title">Taca Healthcare</div>
+                    </div>
+                   
+                    
+                </div>
+            </div>
+        </div>
+
+                <!-- Add other categories similarly -->
+                <div class="category-container">
+                    <h3 class="category-title">Clinics</h3>
+                    <div class="logo-slider">
+                        <div class="logo-track">
+                            <!-- Original set -->
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/continua.jpeg" alt="Uniheal">
+                                </div>
+                                <div class="logo-title">Continua Kids Foundation</div>
+                            </div>
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/aster.jpeg" alt="VitusCare">
+                                </div>
+                                <div class="logo-title">Aster Clinic </div>
+                            </div>
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/vision-eye.jpeg" alt="Vizer Life">
+                                </div>
+                                <div class="logo-title">Vision Eye Centre</div>
+                            </div>
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/cloudnine.png" alt="TaCa Healthcare">
+                                </div>
+                                <div class="logo-title">Cloudnine</div>
+                            </div>
+                            
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/femme.png" alt="Kidney Healers">
+                                </div>
+                                <div class="logo-title">Femme Nest</div>
+                            </div>
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/cosmodent.jpeg" alt="Kidney Healers">
+                                </div>
+                                <div class="logo-title">Cosmodent</div>
+                            </div>
+                            <!-- Duplicate set for continuous scroll -->
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/dentem.png" alt="Uniheal">
+                                </div>
+                                <div class="logo-title">Dentem</div>
+                            </div>
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/neelkanth.jpeg" alt="VitusCare">
+                                </div>
+                                <div class="logo-title">Neelkanth Hospitals</div>
+                            </div>
+                            <div class="logo-slide">
+                                <div class="logo-image-wrapper">
+                                    <img src="assets/images/logos/kalosa.png" alt="Vizer Life">
+                                </div>
+                                <div class="logo-title">Kalosa</div>
+                            </div>
+                           
+                            
+                        </div>
+                    </div>
+                </div>
+    </div>
+</section>
+
 </body>
 </html>
